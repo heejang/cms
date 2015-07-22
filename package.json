@@ -20,10 +20,11 @@
     "tuxharness": "^2.0.2"
   },
   "dependencies": {
-    "dustjs-linkedin": "^2.7.2"
+    "dustjs-linkedin": "^2.7.2",
+    "hapi": "^8.8.0"
   },
   "repository": {
-   "type": "git",
-   "url": "git@github.com:heejang/cms.git"
+    "type": "git",
+    "url": "git@github.com:heejang/cms.git"
   }
 }
