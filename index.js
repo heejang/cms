@@ -1,21 +1,27 @@
 var Hapi = require('hapi');
 
 var server = new Hapi.Server();
-server.connection({ port: 3000 });
+server.connection({ 
+    host: 'localhost', 
+    port: 8000 
+});
 
 server.route({
     method: 'GET',
-    path: '/',
+    path: '/hello',
     handler: function (request, reply) {
-        reply('Hello, world!');
+        reply('Hello world!');
     }
 });
 
 server.route({
     method: 'GET',
-    path: '/{name}',
-    handler: function (request, reply) {
-        reply('Hello, ' + encodeURIComponent(request.params.name) + '!');
+    path: '/{param*}',
+    handler: {
+        directory: {
+            path: 'public',
+            listing: true
+        }
     }
 });
 

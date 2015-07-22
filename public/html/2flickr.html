@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>2flickr.html</title>
+</head>
+
+<body>
+	<h1>CMS</h1>
+    <h2>Flickr</h2>
+    
+    <h3>Goal</h3>
+    <p>As a user, I want to see photos tagged with Vancouver.</p>
+    <p>As a dev, I want to search Flickr's API for public photos with the tag "Vancouver"</p>
+    
+    <h3>Technologies</h3>
+    <ul>
+    	<li>Flickr API</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+        <li>jQuery AJAX</li>
+    </ul>
+    
+    <h3>Live demo</h3>
+    <ul id="title"></ul>
+    <script>
+        /*
+        1) Prove the Flickr data is relevant; open a new browser tab, ensure the JSON response contains enough info to build a JPG path; Get API key
+        2) Attach credentials.js and jQuery to our document
+        3) Use jQuery AJAX to connect to Flickr API
+        4) On success, set a breakpoint and ensure JSON response matches expected format, schema, and has valid content
+        5) Stage a local commit to Git
+        */
+    </script>
+    <!-- Flickr API global variables -->
+    <script src="../js/credentials.js"></script> 
+    <!-- Attach jQuery library -->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Page specific code -->
+    <script>
+        $.ajax({
+            "url": "https://api.flickr.com/services/rest/",
+            "data": {
+                "method": "flickr.photos.search",
+                "api_key": credentials.flickr.api_key,
+                "tags": "Vancouver",
+                "format": "json",
+                "nojsoncallback": 1
+            },
+            "success": function (response) {
+                console.log(response.photos.photo);
+    debugger;
+            }
+        });
+
+    </script>
+    
+</body>
+</html>
