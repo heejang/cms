@@ -38,11 +38,31 @@ server.route({
         
         httpRequest(options, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                console.log('flickr content coming soon') // CLI 
-                reply(body); // Show the HTML for the Google homepage in Browser output
+                console.log('flickr content coming soon') // CLI
+                var photoLists = JSON.parse(body).photos.photo,
+                    link = "",
+                    title = "",
+                    links = [],
+                    titles = [],
+                    photoInfo = {},
+                    photoJSON = [];
+
+                    for (var i=0; i<photoLists.length; i++) {
+                        link = "https://farm" + photoLists[i].farm + ".staticflickr.com/" + photoLists[i].server + "/" + photoLists[i].id + "_" + photoLists[i].secret + ".jpg";
+                        title = photoLists[i].title;
+                        links.push(link);
+                        titles.push(title);
+
+                        photoJSON.push({"link": link, "title": title});
+                    }
+                    photoInfo = {
+                        "links": links,
+                        "title": titles
+                    };
+
+                reply(photoJSON); // Show the HTML for the Google homepage in Browser output
             }
         })
-
     }
 });
 
